@@ -1,6 +1,6 @@
-CREATE TABLE "departments" ( "dept_no" VARCHAR NOT NULL, "dept_name" VARCHAR NOT NULL, CONSTRAINT "pk_departments" PRIMARY KEY ( "dept_no" ) );
+-- CREATE TABLE "departments" ( "dept_no" VARCHAR NOT NULL, "dept_name" VARCHAR NOT NULL, CONSTRAINT "pk_departments" PRIMARY KEY ( "dept_no" ) );
 
-CREATE TABLE "dept_emp" ( "emp_no" INT NOT NULL, "dept_no" VARCHAR NOT NULL, CONSTRAINT "pk_emp" PRIMARY KEY ( "emp_no" ));
+--CREATE TABLE "dept_emp" ( "emp_no" INT NOT NULL, "dept_no" VARCHAR NOT NULL, CONSTRAINT "pk_emp" PRIMARY KEY ( "emp_no" ));
 
 CREATE TABLE "dept_manager" ( "dept_no" VARCHAR NOT NULL, "emp_no" INT NOT NULL );
 
@@ -9,7 +9,6 @@ CREATE TABLE "employees" ( "emp_no" INT NOT NULL, "emp_title" VARCHAR NOT NULL, 
 CREATE TABLE "salaries" ( "emp_no" INT NOT NULL, "salary" INT NOT NULL );
 
 CREATE TABLE "titles" ( "emp_no" INT NOT NULL, "title" VARCHAR NOT NULL, CONSTRAINT "pk_titles" PRIMARY KEY ( "title_id" ));
-					   
 -- We need keys to connect our different tables 
 					   
 ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_emp_no" FOREIGN KEY("emp_no") REFERENCES "employees" ("emp_no");
@@ -37,13 +36,5 @@ ON dept_manager.emp_no = employees.emp_no;
 SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name FROM dept_emp JOIN employees ON dept_emp.emp_no = employees.emp_no JOIN departments ON dept_emp.dept_no = departments.dept_no;					   
 SELECT first_name, last_name FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';					   
 SELECT dept_emp.emp_no, employees.last_name, employees.first_name, departments.dept_name FROM dept_emp JOIN employees ON dept_emp.emp_no = employees.emp_no JOIN departments ON dept_emp.dept_no = departments.dept_no WHERE departments.dept_name = 'Sales';					   
-					   
-					   
-					   
-					   
-					   
-					   
-					   
-					   
 					   
 					   
